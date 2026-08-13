@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>React Native Developer Roadmap 2026 — Skills, Projects and Career Guide</title>
+<meta name="description" content="A dark, terminal-inspired roadmap for becoming a job ready React Native developer in 2026. JavaScript fundamentals, navigation, testing, deployment and career tracks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1117;
+    --surface:#171A22;
+    --surface-alt:#1E222C;
+    --line:#282D39;
+    --amber:#FFB454;
+    --amber-dim:#E39C3F;
+    --mint:#5EEAD4;
+    --text:#F4F2ED;
+    --muted:#8D93A6;
+    --radius:14px;
+    --wrap:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--mint);outline-offset:3px;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    color:var(--mint);
+    letter-spacing:0.02em;
+  }
+  .eyebrow::before{content:"// ";color:var(--muted);}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,17,23,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 0;
+  }
+  .logo{
+    display:flex;align-items:center;gap:8px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:16px;font-weight:500;
+  }
+  .logo .blink{
+    display:inline-block;width:9px;height:16px;background:var(--amber);
+    animation:blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+  .nav-links{display:flex;align-items:center;gap:28px;}
+  .nav-links a{font-size:14px;color:var(--muted);transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 20px;border-radius:10px;
+    font-size:14px;font-weight:600;
+    font-family:'Inter',sans-serif;
+    border:1px solid transparent;
+    cursor:pointer;transition:transform .15s ease, background .2s ease, border-color .2s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-amber{background:var(--amber);color:#231603;}
+  .btn-amber:hover{background:#ffc477;}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--muted);}
+  .menu-toggle{
+    display:none;background:none;border:1px solid var(--line);border-radius:8px;
+    color:var(--text);width:38px;height:38px;cursor:pointer;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 64px;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
+  }
+  .hero h1{font-size:46px;line-height:1.08;margin:14px 0 18px;}
+  .hero h1 span{color:var(--amber);}
+  .hero p.lead{font-size:17px;color:var(--muted);max-width:46ch;margin-bottom:30px;}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;}
+
+  .terminal{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+  }
+  .terminal-bar{
+    display:flex;align-items:center;gap:8px;
+    padding:12px 16px;border-bottom:1px solid var(--line);
+    background:var(--surface-alt);
+  }
+  .dot{width:10px;height:10px;border-radius:50%;}
+  .dot.r{background:#FF6B6B;} .dot.y{background:#FFC15E;} .dot.g{background:#5CD68A;}
+  .terminal-title{margin-left:6px;font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+  .terminal-body{
+    padding:22px 20px 26px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:13.5px;line-height:1.9;
+    min-height:230px;
+  }
+  .terminal-body .prompt{color:var(--mint);}
+  .terminal-body .ok{color:#5CD68A;}
+  .terminal-body .out{color:var(--muted);}
+  .terminal-body .final{color:var(--amber);font-weight:600;}
+  .cursor{display:inline-block;width:8px;height:15px;background:var(--mint);vertical-align:-2px;animation:blink 1s steps(1) infinite;}
+
+  /* ---------- ticker ---------- */
+  .ticker-wrap{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:var(--surface);overflow:hidden;
+  }
+  .ticker{
+    display:flex;white-space:nowrap;
+    animation:scroll 26s linear infinite;
+    padding:14px 0;
+  }
+  .ticker span{
+    font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);
+    margin:0 20px;
+  }
+  .ticker span b{color:var(--text);font-weight:500;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- section shell ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head h2{font-size:32px;margin-top:10px;}
+  .section-head p{color:var(--muted);margin-top:12px;font-size:15.5px;}
+
+  /* ---------- roadmap timeline ---------- */
+  .timeline{position:relative;}
+  .timeline::before{
+    content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;
+    background:linear-gradient(var(--line),var(--line) 92%,transparent);
+    transform:translateX(-1px);
+  }
+  .stage{
+    display:grid;grid-template-columns:1fr 60px 1fr;align-items:start;
+    margin-bottom:42px;
+  }
+  .stage-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 24px;max-width:440px;
+  }
+  .stage:nth-child(odd) .stage-card{grid-column:1;justify-self:end;}
+  .stage:nth-child(even) .stage-card{grid-column:3;justify-self:start;}
+  .stage-node{
+    grid-column:2;justify-self:center;
+    width:44px;height:44px;border-radius:50%;
+    background:var(--ink);border:2px solid var(--amber);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--amber);
+    margin-top:6px;
+  }
+  .stage-cmd{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mint);margin-bottom:8px;
+  }
+  .stage-card h3{font-size:18px;margin-bottom:8px;}
+  .stage-card p{color:var(--muted);font-size:14.5px;margin:0;}
+  .stage-card .inline-link{
+    display:inline-block;margin-top:12px;font-size:13.5px;color:var(--amber);
+    border-bottom:1px dashed var(--amber-dim);
+  }
+
+  /* ---------- tracks ---------- */
+  .tracks-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  }
+  .track-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 22px;display:flex;flex-direction:column;gap:10px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .track-card:hover{transform:translateY(-4px);border-color:var(--muted);}
+  .track-card.featured{
+    border:1px solid var(--amber);
+    background:linear-gradient(180deg,var(--surface-alt),var(--surface));
+  }
+  .badge{
+    align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:11px;
+    padding:4px 10px;border-radius:999px;background:rgba(255,180,84,0.14);color:var(--amber);
+  }
+  .track-card h3{font-size:18px;}
+  .track-card p{color:var(--muted);font-size:14px;flex-grow:1;}
+  .track-card .track-cta{
+    font-size:13.5px;font-weight:600;color:var(--text);
+    display:flex;align-items:center;gap:6px;
+  }
+  .track-card:hover .track-cta{color:var(--mint);}
+  .compare-note{margin-top:26px;font-size:14.5px;color:var(--muted);}
+  .compare-note a{color:var(--mint);border-bottom:1px dashed rgba(94,234,212,0.5);}
+
+  /* ---------- resources ---------- */
+  .resource-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .resource-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;display:block;position:relative;overflow:hidden;
+  }
+  .resource-card:hover{border-color:var(--mint);}
+  .resource-tag{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);}
+  .resource-card h3{font-size:19px;margin:10px 0 10px;}
+  .resource-card p{color:var(--muted);font-size:14px;}
+  .resource-arrow{
+    margin-top:16px;font-size:13.5px;color:var(--amber);display:flex;align-items:center;gap:6px;
+  }
+
+  /* ---------- cta banner ---------- */
+  .cta-banner{
+    background:var(--surface);border:1px solid var(--line);border-radius:20px;
+    padding:56px 44px;text-align:center;
+    background-image:radial-gradient(circle at 20% 20%, rgba(94,234,212,0.08), transparent 40%),
+                      radial-gradient(circle at 80% 80%, rgba(255,180,84,0.08), transparent 40%);
+  }
+  .cta-banner h2{font-size:30px;max-width:600px;margin:0 auto 14px;}
+  .cta-banner p{color:var(--muted);margin-bottom:28px;}
+  .cta-banner .btn-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:60px 0 32px;background:var(--surface);}
+  .footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px;}
+  .pkg{
+    background:var(--ink);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 22px 20px;font-family:'JetBrains Mono',monospace;font-size:13px;
+  }
+  .pkg-title{color:var(--muted);margin-bottom:10px;}
+  .pkg-line{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--line);}
+  .pkg-line:last-child{border-bottom:none;}
+  .pkg-key{color:var(--text);}
+  .pkg-val{color:var(--mint);}
+  .pkg-val:hover{color:var(--amber);}
+  .footer-col h4{font-size:13px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-bottom:14px;font-weight:400;}
+  .footer-col a{display:block;font-size:14px;color:var(--text);padding:6px 0;}
+  .footer-col a:hover{color:var(--amber);}
+  .footer-bottom{
+    margin-top:48px;padding-top:24px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+    font-size:13px;color:var(--muted);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:920px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;}
+    .tracks-grid{grid-template-columns:repeat(2,1fr);}
+    .resource-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .nav-links{display:none;}
+    .menu-toggle{display:block;}
+  }
+  @media (max-width:920px){
+    .nav-links.open{
+      display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;
+      background:var(--surface);border-bottom:1px solid var(--line);padding:18px 28px;gap:16px;
+    }
+  }
+  @media (max-width:680px){
+    .hero h1{font-size:32px;}
+    .timeline::before{left:22px;}
+    .stage{grid-template-columns:44px 1fr;}
+    .stage-node{grid-column:1;margin-top:2px;width:36px;height:36px;font-size:9px;}
+    .stage:nth-child(odd) .stage-card,
+    .stage:nth-child(even) .stage-card{grid-column:2;justify-self:start;max-width:none;}
+    .tracks-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .cta-banner{padding:40px 22px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker{animation:none;}
+    .blink,.cursor{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo"><span class="mono">rn</span>_roadmap<span class="blink"></span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#roadmap">Roadmap</a>
+      <a href="#tracks">Tracks</a>
+      <a href="#resources">Resources</a>
+      <a href="https://www.justacademy.co/course-detail/react-native-training" class="btn btn-amber">Explore course</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">react-native-roadmap · 2026 edition</p>
+        <h1>Stop watching tutorials.<br><span>Start shipping apps.</span></h1>
+        <p class="lead">A no fluff roadmap that takes you from JavaScript basics to a job ready React Native developer, one real build at a time. Skills, projects and career guidance for 2026.</p>
+        <div class="hero-ctas">
+          <a href="https://www.justacademy.co/course-detail/react-native-training" class="btn btn-amber">Explore the full course</a>
+          <a href="https://www.justacademy.co/register-for-course-demo" class="btn btn-ghost">Book a free demo</a>
+        </div>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="terminal-title">career.sh</span>
+        </div>
+        <div class="terminal-body" id="typedTerminal"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span><b>JavaScript</b> → TypeScript → Components → Navigation → Testing → Performance → Deployment → Career</span>
+      <span><b>JavaScript</b> → TypeScript → Components → Navigation → Testing → Performance → Deployment → Career</span>
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <section id="roadmap">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">roadmap.json</p>
+        <h2>Seven stages from zero to job ready</h2>
+        <p>Every stage builds on the last. Skip one and the gap shows up later, usually during an interview or your first week on a real team.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="stage">
+          <div class="stage-card">
+            <p class="stage-cmd">$ stage_01 --js-foundations</p>
+            <h3>JavaScript and TypeScript</h3>
+            <p>Functions, closures, async await and typed components. The language everything else is written in.</p>
+            <a href="https://www.justacademy.co/course-detail/javascript-training" class="inline-link">Strengthen this stage →</a>
+          </div>
+          <div class="stage-node mono">01</div>
+          <div></div>
+        </div>
+
+        <div class="stage">
+          <div></div>
+          <div class="stage-node mono">02</div>
+          <div class="stage-card">
+            <p class="stage-cmd">$ stage_02 --core-components</p>
+            <h3>Components, props and hooks</h3>
+            <p>useState and useEffect become second nature once you stop looking them up mid build.</p>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-card">
+            <p class="stage-cmd">$ stage_03 --navigation</p>
+            <h3>Navigation and app flow</h3>
+            <p>Stack, tab and drawer navigators, plus authentication flows that switch screens correctly.</p>
+          </div>
+          <div class="stage-node mono">03</div>
+          <div></div>
+        </div>
+
+        <div class="stage">
+          <div></div>
+          <div class="stage-node mono">04</div>
+          <div class="stage-card">
+            <p class="stage-cmd">$ stage_04 --testing</p>
+            <h3>Unit and end to end testing</h3>
+            <p>The skill self taught developers skip most, and the one interviewers ask about first.</p>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-card">
+            <p class="stage-cmd">$ stage_05 --performance</p>
+            <h3>Debugging and performance</h3>
+            <p>Reading a red screen calmly, fixing re renders, and understanding the new architecture.</p>
+          </div>
+          <div class="stage-node mono">05</div>
+          <div></div>
+        </div>
+
+        <div class="stage">
+          <div></div>
+          <div class="stage-node mono">06</div>
+          <div class="stage-card">
+            <p class="stage-cmd">$ stage_06 --deployment</p>
+            <h3>Shipping to the app stores</h3>
+            <p>Signed builds, icons, splash screens and review guidelines, practiced before they matter.</p>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-card">
+            <p class="stage-cmd">$ stage_07 --career</p>
+            <h3>Career, salary and freelancing</h3>
+            <p>What hiring managers actually screen for, and how to widen your options beyond one job title.</p>
+          </div>
+          <div class="stage-node mono">07</div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACKS -->
+  <section id="tracks">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">tracks.config</p>
+        <h2>Pick your mobile development track</h2>
+        <p>React Native is not the only door into mobile development. Know the landscape before you commit your learning hours.</p>
+      </div>
+
+      <div class="tracks-grid">
+        <a href="https://www.justacademy.co/course-detail/react-native-training" class="track-card featured">
+          <span class="badge">Recommended path</span>
+          <h3>React Native</h3>
+          <p>One codebase, JavaScript and TypeScript, ships to Android and iOS at once. The fastest route to a hireable mobile skill set in 2026.</p>
+          <span class="track-cta">View course →</span>
+        </a>
+        <a href="https://www.justacademy.co/course-detail/flutter-training" class="track-card">
+          <h3>Flutter</h3>
+          <p>Single codebase in Dart, strong for teams that want highly custom, pixel perfect interfaces.</p>
+          <span class="track-cta">View course →</span>
+        </a>
+        <a href="https://www.justacademy.co/course-detail/android-app-development" class="track-card">
+          <h3>Android native</h3>
+          <p>Deepest possible access to Android hardware and OS level features, at the cost of a second codebase.</p>
+          <span class="track-cta">View course →</span>
+        </a>
+        <a href="https://www.justacademy.co/course-detail/ios-training" class="track-card">
+          <h3>iOS native</h3>
+          <p>Built for teams going all in on Apple's ecosystem with full platform level control.</p>
+          <span class="track-cta">View course →</span>
+        </a>
+      </div>
+
+      <p class="compare-note">Not sure which one fits you. Read the full breakdown of <a href="https://www.justacademy.co/blog-detail/flutter-vs-react-native-vs-android-vs-ios-which-app-development-career-is-best-in-2026">how these four career paths actually compare in 2026</a>.</p>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">reading list</p>
+        <h2>Go deeper before you start</h2>
+        <p>Two companion reads that pair well with this roadmap.</p>
+      </div>
+
+      <div class="resource-grid">
+        <a href="https://www.justacademy.co/blog-detail/react-native-developer-roadmap-2026-skills-projects-and-career-guide" class="resource-card">
+          <p class="resource-tag">article · roadmap</p>
+          <h3>React Native Developer Roadmap 2026</h3>
+          <p>The full write up behind this page, including project ideas at every stage and a realistic timeline for getting job ready.</p>
+          <span class="resource-arrow">Read the article →</span>
+        </a>
+        <a href="https://www.justacademy.co/blog-detail/flutter-vs-react-native-vs-android-vs-ios-which-app-development-career-is-best-in-2026" class="resource-card">
+          <p class="resource-tag">article · comparison</p>
+          <h3>Flutter vs React Native vs Android vs iOS</h3>
+          <p>Which mobile development career actually makes sense for you in 2026, compared honestly across skills, demand and salary.</p>
+          <span class="resource-arrow">Read the comparison →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="wrap">
+      <div class="cta-banner">
+        <h2>Your roadmap starts with one command</h2>
+        <p>Talk to a mentor, see the curriculum, and figure out where you actually stand today.</p>
+        <div class="btn-row">
+          <a href="https://www.justacademy.co/register-for-course-demo" class="btn btn-amber">Book a free demo</a>
+          <a href="https://www.justacademy.co/course-detail/react-native-training" class="btn btn-ghost">Explore the curriculum</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="pkg-title mono">package.json</p>
+        <div class="pkg">
+          <div class="pkg-line"><span class="pkg-key">"course"</span><a href="https://www.justacademy.co/course-detail/react-native-training" class="pkg-val">"react-native-training"</a></div>
+          <div class="pkg-line"><span class="pkg-key">"demo"</span><a href="https://www.justacademy.co/register-for-course-demo" class="pkg-val">"book-free-demo"</a></div>
+          <div class="pkg-line"><span class="pkg-key">"javascript"</span><a href="https://www.justacademy.co/course-detail/javascript-training" class="pkg-val">"javascript-training"</a></div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Compare tracks</h4>
+        <a href="https://www.justacademy.co/course-detail/flutter-training">Flutter training</a>
+        <a href="https://www.justacademy.co/course-detail/android-app-development">Android development</a>
+        <a href="https://www.justacademy.co/course-detail/ios-training">iOS training</a>
+      </div>
+      <div class="footer-col">
+        <h4>Read more</h4>
+        <a href="https://www.justacademy.co/blog-detail/react-native-developer-roadmap-2026-skills-projects-and-career-guide">Roadmap article</a>
+        <a href="https://www.justacademy.co/blog-detail/flutter-vs-react-native-vs-android-vs-ios-which-app-development-career-is-best-in-2026">Track comparison</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 JustAcademy. Built for developers, by developers.</span>
+      <span class="mono">status: shipping 🚀</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav toggle
+  document.getElementById('menuToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // terminal typing effect
+  (function(){
+    var el = document.getElementById('typedTerminal');
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var lines = [
+      {text: '$ npx create-react-native-app my-career', cls: 'prompt'},
+      {text: '✔ installing javascript-fundamentals@2026', cls: 'ok'},
+      {text: '✔ installing typescript@stable', cls: 'ok'},
+      {text: '✔ configuring react-navigation', cls: 'ok'},
+      {text: '✔ running test-suite ... 42 passed', cls: 'ok'},
+      {text: '✔ optimizing performance', cls: 'ok'},
+      {text: '✔ building for App Store & Play Store', cls: 'ok'},
+      {text: '', cls: 'out'},
+      {text: '> Build succeeded. Ready to ship 🚀', cls: 'final'}
+    ];
+
+    if(reduced){
+      el.innerHTML = lines.map(function(l){
+        return '<div class="'+l.cls+'">'+l.text+'</div>';
+      }).join('');
+      return;
+    }
+
+    var lineIndex = 0, charIndex = 0;
+    var container = document.createElement('div');
+    el.appendChild(container);
+
+    function typeNext(){
+      if(lineIndex >= lines.length){
+        var c = document.createElement('span');
+        c.className = 'cursor';
+        el.appendChild(c);
+        return;
+      }
+      var current = lines[lineIndex];
+      if(charIndex === 0){
+        container = document.createElement('div');
+        container.className = current.cls;
+        el.appendChild(container);
+      }
+      if(charIndex < current.text.length){
+        container.textContent = current.text.slice(0, charIndex+1);
+        charIndex++;
+        setTimeout(typeNext, 14 + Math.random()*18);
+      } else {
+        lineIndex++;
+        charIndex = 0;
+        setTimeout(typeNext, 220);
+      }
+    }
+    typeNext();
+  })();
+
+  // scroll reveal
+  (function(){
+    var targets = document.querySelectorAll('.stage-card, .track-card, .resource-card');
+    if(!('IntersectionObserver' in window)){ return; }
+    targets.forEach(function(t){
+      t.style.opacity = '0';
+      t.style.transform = 'translateY(16px)';
+      t.style.transition = 'opacity .5s ease, transform .5s ease';
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    targets.forEach(function(t){ io.observe(t); });
+  })();
+</script>
+
+</body>
+</html>
